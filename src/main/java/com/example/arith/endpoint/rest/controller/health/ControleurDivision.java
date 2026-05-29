@@ -9,15 +9,15 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 @RequestMapping
 public class ControleurDivision {
-    private final ServiceDivision serviceDivision;
+  private final ServiceDivision serviceDivision;
 
-    @GetMapping
-    public double division(@RequestParam double a, @RequestParam double b) {
-        return serviceDivision.division(a, b);
-    }
+  @GetMapping("/div")
+  public double division(@RequestParam double a, @RequestParam double b) {
+    return serviceDivision.division(a, b);
+  }
 
-    @ExceptionHandler({IllegalArgumentException.class, ArithmeticException.class})
-    public ResponseEntity<String> handleException(RuntimeException ex) {
-        return ResponseEntity.badRequest().body(ex.getMessage());
-    }
+  @ExceptionHandler({IllegalArgumentException.class, ArithmeticException.class})
+  public ResponseEntity<String> handleException(RuntimeException ex) {
+    return ResponseEntity.badRequest().body(ex.getMessage());
+  }
 }

@@ -9,15 +9,15 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 @RequestMapping
 public class ControleurMultiplication {
-    private final ServiceMultiplication serviceMultiplication;
+  private final ServiceMultiplication serviceMultiplication;
 
-    @GetMapping
-    public double multiplication(@RequestParam double a, @RequestParam double b) {
-        return serviceMultiplication.multiplication(a, b);
-    }
+  @GetMapping("Mult")
+  public double multiplication(@RequestParam double a, @RequestParam double b) {
+    return serviceMultiplication.multiplication(a, b);
+  }
 
-    @ExceptionHandler({IllegalArgumentException.class})
-    public ResponseEntity<String> handleException(RuntimeException ex) {
-        return ResponseEntity.badRequest().body(ex.getMessage());
-    }
+  @ExceptionHandler({IllegalArgumentException.class})
+  public ResponseEntity<String> handleException(RuntimeException ex) {
+    return ResponseEntity.badRequest().body(ex.getMessage());
+  }
 }
